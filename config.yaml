@@ -1,0 +1,43 @@
+# RAG Admin Configuration
+# This file overrides default settings from backend/config.py
+
+# --- Application ---
+app_name: "RAG Admin"
+app_version: "1.0.0"
+debug: true
+
+# --- Embedding Settings ---
+# Options: "local" (sentence-transformers) or "openai"
+embedding_provider: "local"
+# Local model name (used when embedding_provider = "local")
+# Recommended: "BAAI/bge-small-zh-v1.5", "shibing624/text2vec-base-chinese"
+embedding_model: "BAAI/bge-small-zh-v1.5"
+
+# OpenAI Embedding (used when embedding_provider = "openai")
+# openai_api_key: "sk-your-api-key"
+# openai_api_base: "https://api.openai.com/v1"
+# openai_embedding_model: "text-embedding-3-small"
+
+# --- LLM Settings for QA ---
+# Options: "openai" (OpenAI-compatible API, including DeepSeek, etc.)
+llm_provider: "openai"
+# For DeepSeek:
+llm_model: "deepseek-chat"
+# llm_api_key: "sk-your-deepseek-api-key"
+# llm_api_base: "https://api.deepseek.com"
+# For OpenAI:
+# llm_api_key: "sk-your-openai-api-key"
+# llm_api_base: "https://api.openai.com/v1"
+# llm_model: "gpt-4o-mini"
+
+# --- Default Chunking ---
+default_chunk_size: 512
+default_chunk_overlap: 64
+default_top_k: 5
+
+# --- Server ---
+host: "0.0.0.0"
+port: 8000
+
+# --- Logging ---
+log_level: "INFO"

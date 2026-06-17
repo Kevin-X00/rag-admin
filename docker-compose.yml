@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  rag-admin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag-admin
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./data:/app/data
+      - ./config.yaml:/app/config.yaml
+    environment:
+      - EMBEDDING_PROVIDER=${EMBEDDING_PROVIDER:-local}
+      - LLM_API_KEY=${LLM_API_KEY:-}
+      - LLM_API_BASE=${LLM_API_BASE:-https://api.deepseek.com}
+      - LLM_MODEL=${LLM_MODEL:-deepseek-chat}
+    restart: unless-stopped
